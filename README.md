@@ -1,4 +1,4 @@
-#DirtySample Refactoring Report
+# DirtySample Refactoring Report
 - 어느곳을 어떻게 리팩토링하였는지 코드와 같이 근거를 들어 설명
 - 어느곳을 어떻게 리팩토링하였는지 코드와 같이 근거를 들어 설명
 - 어느곳을 어떻게 리팩토링하였는지 코드와 같이 근거를 들어 설명
