@@ -1,7 +1,7 @@
 package ac.kr.ajou.dirt;
 
 class DirtySample {
-    Item[] items;
+    private Item[] items;
 
     public DirtySample(Item[] items) {
         this.items = items;
@@ -20,7 +20,7 @@ class DirtySample {
         }
     }
 
-    public void isItemQualityLessThan50(int index) {
+    private void isItemQualityLessThan50(int index) {
         if (items[index].quality < 50) {
             addIntegerToQuality(index,1);
             if (nameIs(items[index], "Backstage passes to a TAFKAL80ETC concert")
