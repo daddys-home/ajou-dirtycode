@@ -44,8 +44,8 @@ class DirtySample {
         }
     }
 
-    public void addIntegerToQuality(int index, int IntegerToadd) {
-        items[index].quality += IntegerToadd;
+    public void addIntegerToQuality(int index, int integerToAdd) {
+        items[index].quality += integerToAdd;
     }
 
     public boolean nameIs(Item item, String s) {
