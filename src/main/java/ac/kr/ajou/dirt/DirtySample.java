@@ -1,84 +1,61 @@
 package ac.kr.ajou.dirt;
 
 class DirtySample {
-    Item[] items;
+    private Item[] items;
 
     public DirtySample(Item[] items) {
         this.items = items;
     }
 
-
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (isLowQualiyItem(items[i])) {
-                if (items[i].quality > 0){
-                    if(!isName(items[i],"Sulfuras, Hand of Ragnaros")) {
-                        addQualityNumber(i,-1);
-                    }
-                }
-            }
-            else if(items[i].quality < 50){
-                updateQualityIsLessThan50(i);
-            }
-            if (!isName(items[i],"Sulfuras, Hand of Ragnaros")) {
-                addSelllnNumber(i, -1);
-            }
-            if (items[i].sellIn < 0) {
-                updateSelllnIsLessThan_0(i);
+            if (!nameIs(items[i], "Sulfuras, Hand of Ragnaros")) {
+                if (isAgedBrieOrBackstagePasses(items[i])) {
+                    isItemQualityLessThan50(i);
+                } else if (items[i].quality > 0) addIntegerToQuality(i, -1);
+
+                items[i].sellIn -= 1;
+                isItemSellInNegative(i);
             }
         }
     }
 
-    private void addSelllnNumber(int i, int num) {
-        items[i].sellIn = items[i].sellIn + num;
-    }
-
-    private void updateSelllnIsLessThan_0(int num) {
-        if (!isName(items[num],"Aged Brie")){
-             if(!isName(items[num],"Backstage passes to a TAFKAL80ETC concert")){
-                 if (items[num].quality > 0) {
-                     if (!items[num].name.equals("Sulfuras, Hand of Ragnaros")) {
-                         addQualityNumber(num, -1);
-                     }
-                 }
-            }
-             else {
-                 items[num].quality = 0;
-             }
-        }
-        else{
-                if (items[num].quality < 50) {
-                    addQualityNumber(num, 1);
-                }
-        }
-    }
-
-    private void addQualityNumber(int i, int num) {
-        items[i].quality = items[i].quality + num;
-    }
-
-    public boolean isLowQualiyItem(Item item)
-    {
-        return !isName(item,"Aged Brie")
-                 && !isName(item,"Backstage passes to a TAFKAL80ETC concert");
-
-    }
-
-    private void updateQualityIsLessThan50(int num) {
-        addQualityNumber(num,1);
-
-        if (isName(items[num],"Backstage passes to a TAFKAL80ETC concert")) {
-            if (items[num].sellIn < 11 && items[num].quality < 50) {
-                addQualityNumber(num,1);
-            }
-
-            if (items[num].sellIn < 6 && items[num].quality < 50) {
-                addQualityNumber(num, 1);
+    private void isItemQualityLessThan50(int index) {
+        if (items[index].quality < 50) {
+            addIntegerToQuality(index,1);
+            if (nameIs(items[index], "Backstage passes to a TAFKAL80ETC concert")
+                    && items[index].sellIn < 11 && items[index].quality < 50) {
+                addIntegerToQuality(index, 1);
+                if (items[index].sellIn < 6 && items[index].quality < 50)
+                    addIntegerToQuality(index, 1);
             }
         }
     }
 
-    private boolean isName(Item item, String name) {
-        return item.name.equals(name);
+
+    public void isItemSellInNegative(int index) {
+        if (items[index].sellIn < 0) {
+            if (nameIs(items[index], "Aged Brie") && items[index].quality < 50) {
+                addIntegerToQuality(index,1);
+            } else if (nameIs(items[index], "Backstage passes to a TAFKAL80ETC concert"))
+                items[index].quality = 0;
+            else if (!isAgedBrieOrBackstagePasses(items[index]) && items[index].quality > 0)
+                addIntegerToQuality(index, -1);
+        }
     }
+
+    public void addIntegerToQuality(int index, int integerToAdd) {
+        items[index].quality += integerToAdd;
+    }
+
+    public boolean nameIs(Item item, String s) {
+        return item.name.equals(s);
+    }
+
+    public boolean isAgedBrieOrBackstagePasses(Item item) {
+        return nameIs(item, "Aged Brie")
+                || nameIs(item, "Backstage passes to a TAFKAL80ETC concert");
+    }
+
+
 }
