@@ -1,5 +1,7 @@
 package ac.kr.ajou.dirt;
 
+
+
 public class Item {
 
     public String name;
