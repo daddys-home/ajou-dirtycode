@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
-public class DirtySampleTest {
+public class ItemServiceTest {
 
 
     @Test
@@ -18,7 +18,7 @@ public class DirtySampleTest {
                 legacyTestItems[j] = new Item("Aged Brie", i, j-2);
                 refactoringTestItems[j] = new Item("Aged Brie", i, j-2);
             }
-            new DirtySample(refactoringTestItems).updateQuality();
+            new ItemService(refactoringTestItems).updateQuality();
             new OriginalDirtySample(legacyTestItems).updateQuality();
             for(int j=0; j<54; j++){
                 assertEquals(legacyTestItems[j].sellIn, refactoringTestItems[j].sellIn);
@@ -40,7 +40,7 @@ public class DirtySampleTest {
                 legacyTestItems[j] = new Item("Backstage passes to a TAFKAL80ETC concert", i, j-2);
                 refactoringTestItems[j] = new Item("Backstage passes to a TAFKAL80ETC concert", i, j-2);
             }
-            new DirtySample(refactoringTestItems).updateQuality();
+            new ItemService(refactoringTestItems).updateQuality();
             new OriginalDirtySample(legacyTestItems).updateQuality();
             for(int j=0; j<54; j++){
                 assertEquals(legacyTestItems[j].sellIn, refactoringTestItems[j].sellIn);
@@ -61,7 +61,7 @@ public class DirtySampleTest {
                 legacyTestItems[j] = new Item("The rest of them", i, j-2);
                 refactoringTestItems[j] = new Item("The rest of them", i, j-2);
             }
-            new DirtySample(refactoringTestItems).updateQuality();
+            new ItemService(refactoringTestItems).updateQuality();
             new OriginalDirtySample(legacyTestItems).updateQuality();
             for(int j=0; j<54; j++){
                 assertEquals(legacyTestItems[j].sellIn, refactoringTestItems[j].sellIn);
@@ -82,7 +82,7 @@ public class DirtySampleTest {
                 legacyTestItems[j] = new Item("Sulfuras, Hand of Ragnaros", i, j-2);
                 refactoringTestItems[j] = new Item("Sulfuras, Hand of Ragnaros", i, j-2);
             }
-            new DirtySample(refactoringTestItems).updateQuality();
+            new ItemService(refactoringTestItems).updateQuality();
             new OriginalDirtySample(legacyTestItems).updateQuality();
             for(int j=0; j<54; j++){
                 assertEquals(legacyTestItems[j].sellIn, refactoringTestItems[j].sellIn);
