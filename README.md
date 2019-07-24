@@ -1,4 +1,4 @@
-# Refactoring Assignment Report
+# 아주대학교 실전코딩 12조 Refactoring Assignment Report
 ## Junit Test 
 테스트조건문을 분석해본결과 Item 객체의 name 속성은 총 4가지 경우(Sulfuras, Hand of Ragnaros, Sulfuras, Hand of Ragnaros, Sulfuras, Hand of Ragnaros, 그외 문자열)가 있고 
 이는 updateQuality() 에서 변하지 않으므로 Item.name을 기준으로 test case를 만들었습니다. Item.sellIn과 Item.quality 값은 updateQuality()내에서 변할 수 있고 if 조건문의 
